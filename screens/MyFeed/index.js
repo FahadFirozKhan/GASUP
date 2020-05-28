@@ -15,7 +15,11 @@ function MyFeedScreen({ navigation }) {
 
     dispatch(getMoreVideos(nextPageToken))
   }
-  
+
+  const refreshVideos = () => {
+    dispatch(getVideos())
+  }
+
   useEffect(() => {
 
     dispatch(getVideos())
@@ -42,6 +46,8 @@ function MyFeedScreen({ navigation }) {
         keyExtractor={(item) => item.id}
         renderItem={({item, index}) => <FeedItem {...item} index={index}/>}
         onEndReached={loadMoreVideos}
+        refreshing={false}
+        onRefresh={refreshVideos}
       />
     </View>
   );
