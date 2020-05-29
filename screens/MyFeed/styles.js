@@ -105,4 +105,26 @@ export default styles = StyleSheet.create({
     fontSize: 11,
     color: "#b9b9b9",
   },
+
+  privateVideo: {
+    flex: 1,
+    backgroundColor: "#222030",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  videoError: {
+    color: "#fff",
+    fontSize: 24,
+    margin: 30,
+    textAlign: "center",
+  },
+  loader: {
+    width: 50,
+    height: 50,
+    backgroundColor: "#fffc",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 8,
+  },
+
 })

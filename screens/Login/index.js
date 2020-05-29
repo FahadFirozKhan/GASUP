@@ -1,5 +1,7 @@
 import React, { useState, useContext } from 'react';
+import OAuthManagerInstance from '../../utils/OAuthInstance';
 import { View, Text, TouchableOpacity, Alert, Image } from 'react-native';
+import { GitHubSocialButton } from 'react-native-social-buttons';
 import { AuthContext } from '../../context';
 
 import logo from '../../assets/group2217.png';
@@ -21,6 +23,17 @@ function LoginScreen(props) {
     } else {
       signIn({ username, password })
     }
+  }
+
+  const onGithubLogin = () => {
+
+    OAuthManagerInstance.authorize('github', {scopes: "user"})
+      .then(resp => {
+
+        console.log("--response from github --", JSON.stringify(resp))
+        signIn({})
+      })
+      .catch(err => console.log(err));
   }
 
   return (
@@ -47,9 +60,13 @@ function LoginScreen(props) {
         visibilityMask
       />
       <View style={styles.buttonArea}>
-        <TouchableOpacity style={styles.gitHubButton} onPress={() => Alert.alert("soon")}>
+        {/* <TouchableOpacity style={styles.gitHubButton} onPress={onGithubLogin}>
           <Text style={styles.buttonText}>Sign in with GitHub</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+        <GitHubSocialButton
+          buttonViewStyle={styles.gitHubButton}
+          onPress={onGithubLogin}
+        />
         <TouchableOpacity style={styles.button} onPress={onLoginPress}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>

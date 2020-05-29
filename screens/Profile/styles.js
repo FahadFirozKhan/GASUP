@@ -4,7 +4,7 @@ import { SCREEN_WIDTH } from '../../utils/AppConstants';
 export default styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f79145",
+    backgroundColor: "#ffa25b",
     justifyContent: "flex-start",
     alignItems: "center",
   },
@@ -35,7 +35,7 @@ export default styles = StyleSheet.create({
   title: {
     color: "white",
     fontSize: 21,
-    fontWeight: "bold",
+    fontWeight: "500",
   },
   profileCard: {
     margin: 30,
@@ -68,6 +68,30 @@ export default styles = StyleSheet.create({
     textAlign: "center" 
   },
   form: {},
+  fieldContainer: {
+    flexDirection: "row",
+    margin: 16,
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderColor: "#d9d9d9",
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    paddingBottom: 16,
+  },
+  fieldInput: {
+    color: "#000",
+    fontSize: 12,
+    textAlign: "left",
+  },
+  fieldValue: {
+    color: "#222",
+    fontSize: 12,
+    textAlign: "left",
+  },
+  fieldName: {
+    color: "#999",
+    fontSize: 12,
+    textAlign: "right",
+  },
   editBtn: {
     position: "absolute",
     height: 40,

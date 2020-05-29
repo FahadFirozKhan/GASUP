@@ -5,6 +5,8 @@ import reduxStore from './redux';
 import MainNavigation from './navigation/AuthFlow';
 
 export default function App() {
+  console.disableYellowBox = true;
+  
   return (
     <Provider store={reduxStore}>
       <NavigationContainer><MainNavigation /></NavigationContainer>

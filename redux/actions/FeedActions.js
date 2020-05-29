@@ -1,4 +1,8 @@
-import { GET_YOUTUBE_VIDEOS, GET_MORE_YOUTUBE_VIDEOS } from '../types';
+import {
+  GET_YOUTUBE_VIDEOS,
+  GET_MORE_YOUTUBE_VIDEOS,
+  CURRENTLY_PLAYING_VIDEO_ID,
+} from '../types';
 import { googleAPIKey } from '../../utils/AppConstants';
 
 export const getVideos = () => async dispatch => {
@@ -44,3 +48,10 @@ export const getMoreVideos = (nextPageToken) => async dispatch => {
   }
 }
 
+export const updateCurrentlyPlayingVideoId = id => dispatch => {
+
+  dispatch({
+    type: CURRENTLY_PLAYING_VIDEO_ID,
+    payload: id
+  })
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { getVideos, getMoreVideos } from '../../redux/actions/FeedActions';
+import { dummy_user_pic } from '../../utils/AppConstants';
 import FeedItem from './FeedItem';
 import styles from './styles';
 
@@ -34,7 +35,7 @@ function MyFeedScreen({ navigation }) {
           <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
             <Image
               style={styles.userPic}
-              source={null}
+              source={{uri: dummy_user_pic}}
               resizeMode="cover"
             />
           </TouchableOpacity>
