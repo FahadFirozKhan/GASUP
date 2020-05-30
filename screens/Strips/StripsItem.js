@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateValue } from '../../redux/actions/StripsAction';
 import { View, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
@@ -6,10 +6,15 @@ import { View, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-nativ
 import styles from './styles';
 
 function StripsItem({item, index, lastIndex}) {
-  const rowIndex = index;
+  const [currValue, setCurrValue] = useState(`${item.values[item.value]}`);
   const dispatch = useDispatch();
+  const rowIndex = index;
 
   const updateSelected = valueIndex => {
+
+    if (currValue !== item.values[valueIndex].toString()) {
+      setCurrValue(item.values[valueIndex].toString())
+    }
 
     dispatch(updateValue({
       x_index: rowIndex,
@@ -60,8 +65,15 @@ function StripsItem({item, index, lastIndex}) {
           <Text style={styles.stripTitle}>{item.title}</Text>
           <TextInput
             style={styles.input}
-            value={`${item.values[item.value]}`}
-            keyboardType="number-pad"
+            value={currValue}
+            onChangeText={text => {
+              let typedValueIndex = item.values.findIndex(x => `${x}`===text)
+              if (typedValueIndex !== -1) {
+                updateSelected(typedValueIndex)
+              } 
+              setCurrValue(text)
+            }}
+            keyboardType={rowIndex===3 ? "decimal-pad" : "number-pad"}
           />
         </View>
         <View style={styles.stripsView}>
